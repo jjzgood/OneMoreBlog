@@ -1,0 +1,85 @@
+{% load static %}
+{% load blog_extras %}
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'blog/css/index.css' %}">
+    <!--    引入monikai.css-->
+    <link rel="stylesheet" href="{% static 'blog/css/monokai.css' %}">
+    <title>OneMore &blog</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'blog:index' %}">OneMore <em>&Blog</em></a>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'blog:navigation' 'python' %}">Python</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:navigation' 'Linux' %}">Linux</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:navigation' 'devops' %}">devops</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+<!--            <li class="nav-item">-->
+<!--                <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">-->
+<!--                    <input type="search" name="q" placeholder="搜索" required>-->
+<!--                    <button type="submit"><span class="ion-ios-search-strong">搜索</span></button>-->
+<!--                </form>-->
+<!--            </li>-->
+            <form class="form-inline my-0 my-lg-0"  role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+                <input class="form-control form-control-sm mr-sm-1" name="q" type="search" placeholder="搜索" aria-label="Search" required>
+                <button class="btn btn-sm btn-outline-info my-1 my-sm-1" type="submit">搜索</button>
+            </form>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 article">
+            {% block main %}
+            {% endblock main %}
+        </div>
+        <div class="col-md-3 tag d-none d-sm-block">
+            <!--公告-->
+            {% include 'blog/inclusions/_anno.html' %}
+            <!--目录-->
+            {% block toc %}
+            {% endblock toc %}
+            {% show_recent_posts %}
+            {% show_archives %}
+            {% show_tags %}
+        </div>
+    </div>
+</div>
+
+<!--底部导航栏-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark footer navbar-static-bottom">
+    <div class="ft mx-auto ">
+        <p>CopyRight © 2020 ~ 2022 OneMore的个人网站</p>
+    </div>
+</nav>
+</body>
+
+</html>

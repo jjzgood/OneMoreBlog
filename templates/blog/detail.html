@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load comments_extras %}
+{% block main %}
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body ">
+        <span class="btn btn-info tag">
+            <a href="#" class="card-link">python</a>
+        </span>
+        <h4 class="card-title post post-{{ post.pk }} ">
+            <a href="# " class="card-link ">{{ post.title }}</a></h4>
+        </h4>
+        <p class="card-text">
+            {{ post.body|safe }}
+        </p>
+        <div class="card-text text-muted">
+            <span class="post-author">{{ post.author }}</span>
+            <span>更新时间：{{ post.modified_time }}</span>
+            <span>阅读：{{ post.views }}</span>
+            <span>评论：{{ post.comment_set.count }}</span>
+        </div>
+        <h5>发表评论</h5>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% show_comment_form post %}
+        <div class="comment-list-panel">
+            {% show_comments post %}
+        </div>
+    </div>
+</div>
+{% endblock main %}
+{% block toc %}
+{% if post.toc %}
+<div class="widget widget-content catalog">
+    <h6 class="widget-title">文章目录</h6>
+    <div class="toc">
+        <ul>
+            {{ post.toc|safe }}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endblock toc %}

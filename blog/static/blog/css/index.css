@@ -1,0 +1,75 @@
+.navbar ul li {
+    line-height: 20px;
+}
+
+.navbar ul li a:hover {
+    color:#fff!important;
+}
+
+.container {
+    margin-top: 5px;
+}
+
+.article .card {
+    margin-bottom: 2rem!important;
+}
+
+.article .card .card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.article .card .tag {
+    background-color: #0099CC;
+    margin-top: 3px;
+}
+
+.article .card span a {
+    color: #fff;
+}
+
+.article .card h4 a {
+    color: black;
+}
+
+.article .card div span {
+    font-size: 0.8rem;
+}
+
+.article .card h4 a:hover {
+    /* font-size: 1.6rem; */
+    /* background-color: #99CCFF; */
+    color: #0099CC;
+}
+
+.tag .card {
+    margin-bottom: 1rem;
+}
+
+.tag .card-header {
+    background-color: #99CCFF;
+}
+
+.tag .anno .card-body {
+    height: 5rem;
+}
+
+.tag .tag-link a {
+    color: black;
+}
+
+.tag .tag-link a:hover {
+    color: #e3ad46;
+}
+
+.tag .catalog ul {
+    padding: 0 0rem 0 1rem;
+    font-size:0.8rem;
+}
+
+.tag .catalog ul a {
+    color: #666666;
+}
+.footer {
+    color: lightgrey;
+}
